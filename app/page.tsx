@@ -1,101 +1,117 @@
-import Image from "next/image";
+'use client';
+import React, { useState } from 'react';
+import Navbar from './navbar'; // Adjust the path as needed
+import Image from 'next/image';
+import bullet from '@/public/green-bullet.svg';
+import share from '@/public/share-button.svg';
+import email from '@/public/survey-email.svg';
+import access from '@/public/change access.svg';
+import response1 from '@/public/response1.svg';
+import response2 from '@/public/response 2.svg';
+import play from '@/public/play-circle.svg';
+import Link from 'next/link';
 
-export default function Home() {
+
+const UploadSurvey = () => {
+  const [formLink, setFormLink] = useState('https://docs.google.com/forms/d/1G1zR6AzGCtN2yE3-pzFq9UuXbQzXlVQyQnGx0oRAbRk');
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    
+    <div className="flex flex-col min-h-screen bg-[#FCFAF2] text-[#2E2F32] relative font-jost">
+      <Navbar />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+      <div className="flex justify-center md:justify-start pt-20 md:pt-16 pl-0 md:pl-96 md:pb-0">
+        <h1 className="text-black font-semibold sm:text-4xl md:text-4xl whitespace-nowrap font-jost">
+          Upload a Survey
+        </h1>
+      </div>
+
+      <div className="flex flex-col md:flex-row w-full max-w-7xl mx-auto px-4 md:px-8 gap-8 font-[Inter]">
+        {/* Left: Instructions Section */}
+        <div className="w-full md:flex-[2] flex flex-col items-center justify-start py-6 pl-[20%]">
+          <div className="w-full max-w-xl border-2 border-[#E7DFC6] rounded-xl px-6 py-8 bg-white shadow-lg">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-xl font-semibold font-jost">Linking your Google Form</h2>
+              <a
+                href="https://your-video-url.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-md text-black underline font-jost flex"
+              >
+                <Image src={play} alt='play circle' /> Watch video
+              </a>
+            </div>
+            <p className='font-jost'>
+              Hey Ayomide! Want to get your survey out there right? For now we only work with Google forms, so this is the step by step process on how to set your survey ready for our platform.
+            </p>
+            <div>
+              <div className="flex font-jost"><Image src={bullet} alt='bullet' /><p>Open your Google Form (the one you wish to publish).</p></div>
+              <div className='flex'><Image src={bullet} alt='bullet' /><p>Click on the Share button.</p></div>
+            </div>
+            <Image src={share} alt='share button' />
+            <div className="flex font-jost"><Image src={bullet} alt='bullet' /><p>Add surveyhustler@gmail.com to your form.</p></div>
+            <Image src={email} alt='survey email' />
+            <div className="flex font-jost"><Image src={bullet} alt='bullet' /><p>Change the access to Editor and ensure the “Notify people” checkbox is clicked. Click on Done.</p></div>
+            <Image src={access} alt='change access' />
+
+            {/* Additional Settings heading */}
+            <h3 className="font-jost text-xl font-medium mt-6 mb-2">Additional Settings</h3>
+            <div>
+              <div className="flex font-jost"><Image src={bullet} alt='bullet' /><p>Click on Settings of your Google Form.</p></div>
+              <div className='flex'><Image src={bullet} alt='bullet' /><p>Go to the Responses section. Ensure “Collect email addresses” is set to Responder input and “Limit to 1 response” is turned on.</p></div>
+            </div>
+            <Image src={response1} alt='responses section' className='pb-2' />
+            <Image src={response2} alt='responses section' />
+
+            {/* Done section */}
+            <h3 className="text-2xl font-medium mt-6 mb-2 font-jost">Done?</h3>
+            <p>Done with making the adjustments? Enter the link to your Google Form below.</p>
+            <input
+              type="text"
+              value={formLink}
+              onChange={(e) => setFormLink(e.target.value)}
+              placeholder="Paste your Google Form link here"
+              className="w-full border border-[#E7DFC6] rounded-md py-2 px-4 text-xs outline-none focus:border-[#B3935E] focus:ring-0 active:border-[#B3935E] hover:border-[#B3935E]"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+
+            <Link href="/second">
+              <button className="font-jost w-full mt-6 bg-[#B3935E] text-white py-2 rounded disabled:opacity-50">
+                Next
+              </button>
+            </Link>
+
+            <div className="font-jost flex justify-between items-center mt-3 text-xs text-[#2E2F32]">
+              <span className="font-jost flex items-center">
+                <span className="font-jost loader border-t-2 border-[#B3935E] rounded-full w-4 h-4 animate-spin mr-2" />
+                Verifying form settings...
+              </span>
+              <span className="text-[#0A8F5A] font-semibold font-jost">Verified</span>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Right note section (desktop only) */}
+        <div className="hidden md:block w-full md:flex-[1] bg-[#FCFAF2] px-4 py-6 font-jost">
+          <p className="text-[#2E2F32] text-sm font-jost">
+            <strong>Note!</strong> <br /> If we notice that any of these settings have
+            been tampered with after upload, your survey will be automatically
+            taken down from the platform with no notice. You will not be entitled
+            either to any refund on cost incurred on the survey.
+          </p>
+        </div>
+
+        {/* Mobile note section */}
+        <div className="md:hidden w-full px-4 mt-6 text-sm text-[#2E2F32] font-jost">
+          <p>
+            <strong>Note!</strong> <br /> If we notice that any of these settings have
+            been tampered with after upload, your survey will be automatically
+            taken down from the platform with no notice. You will not be entitled
+            either to any refund on cost incurred on the survey.
+          </p>
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default UploadSurvey;

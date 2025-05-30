@@ -35,7 +35,7 @@ import type { StylesConfig } from 'react-select';
 
 import type { CSSObject } from '@emotion/react';
 
-const customStyles: StylesConfig<any, true> = {
+const customStyles: StylesConfig<OptionType, true> = {
   control: (provided: CSSObject) => ({
     ...provided,
     minHeight: '40px',

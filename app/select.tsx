@@ -31,7 +31,7 @@ const options = {
   ]
 };
 
-import type { StylesConfig, GroupBase, ControlProps, MultiValueProps, MultiValueRemoveProps } from 'react-select';
+import type { StylesConfig } from 'react-select';
 
 import type { CSSObject } from '@emotion/react';
 

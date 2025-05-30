@@ -2,7 +2,6 @@
 import React from 'react';
 import Image from 'next/image';
 import logoOnly from '@/public/surveylogo.svg';
-import Link from 'next/link';
 
 const Navbar = () => {
   return (

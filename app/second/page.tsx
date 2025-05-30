@@ -14,8 +14,7 @@ const SurveySpecification = () => {
   const [duration, setDuration] = useState('');
   const [responses, setResponses] = useState('');
   const [price, setPrice] = useState('');
-  const [institution, setInstitution] = useState('Covenant University');
-  const [gender] = useState(['Male', 'Female']);
+  const [institution] = useState('Covenant University');
   const [role] = useState('Student');
   const [showSummary, setShowSummary] = useState(false);
 
